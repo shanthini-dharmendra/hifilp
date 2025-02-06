@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/settingsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TEAM SETTINGS"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingBottom="20dp"
+            android:textAlignment="center" />
+
+        <!-- Team Member 1 -->
+        <ImageView
+            android:id="@+id/teamMember1Image"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="Shanthini D"
+            android:src="@drawable/shanu" />
+
+        <TextView
+            android:id="@+id/teamMember1Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shanthini D"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:id="@+id/pickDateTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Birthday Reminder"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/selectedDateTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No date selected"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp" />
+
+        <!-- Team Member 2 -->
+        <ImageView
+            android:id="@+id/teamMember2Image"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/yash"
+            android:contentDescription="Yasvitha R S"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/teamMember2Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yasvitha R S"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:id="@+id/pickDateTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Birthday Reminder"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/selectedDateTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No date selected"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp" />
+
+        <!-- Team Member 3 -->
+        <ImageView
+            android:id="@+id/teamMember3Image"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/rakesh"
+            android:contentDescription="Rakesh S"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/teamMember3Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rakesh S"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:id="@+id/pickDateTime3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Birthday Reminder"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/selectedDateTime3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No date selected"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp" />
+
+        <!-- Save All Reminders Button -->
+        <Button
+            android:id="@+id/setNotificationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save All Reminders"
+            android:layout_marginTop="20dp"
+            android:padding="10dp" />
+
+    </LinearLayout>
+</ScrollView>
