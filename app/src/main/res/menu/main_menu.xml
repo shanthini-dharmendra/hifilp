@@ -3,6 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/projectDescription"
+        android:title="Project Description"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/aboutTeam"
+        android:title="About Team"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/aboutPage"
         android:title="About Page"
         app:showAsAction="never" />

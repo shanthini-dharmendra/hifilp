@@ -60,7 +60,7 @@ object TimeTableData {
             "13:40" to "Self Study",
             "14:30" to "Library",
             "15:20" to "Sports",
-            "16:10" to "Skillrack"
+            "16:42" to "Skillrack"
         )
         // ✅ No Sunday (Timetable stops on Saturday)
     )

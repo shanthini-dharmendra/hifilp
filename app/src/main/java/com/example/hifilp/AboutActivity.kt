@@ -39,18 +39,29 @@ class AboutActivity : AppCompatActivity() {
                 onBackPressed()
                 true
             }
+            R.id.aboutTeam -> {  // ✅ When "About Team" is clicked
+                val intent = Intent(this, AboutTeamActivity::class.java)
+                startActivity(intent)  // ✅ Navigate to About Team Page
+                true
+            }
+            R.id.projectDescription -> {
+                val intent = Intent(this, ProjectDescriptionActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.aboutPage -> {
-                // Stay on the same page
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.teamDetails -> {
-                // ✅ Navigate to Team Members Page
-                startActivity(Intent(this, MainActivity::class.java))
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.settings -> {
-                // ✅ Navigate to SettingsActivity
-                startActivity(Intent(this, SettingsActivity::class.java))
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.exitApp -> {

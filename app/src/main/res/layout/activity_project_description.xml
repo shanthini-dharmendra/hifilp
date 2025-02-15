@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_blue"
+    tools:context=".ProjectDescriptionActivity">
+
+    <!-- Centered Image -->
+    <ImageView
+        android:id="@+id/projectImage"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/download"
+        android:contentDescription="Project Image"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <!-- Project Title -->
+    <TextView
+        android:id="@+id/projectTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎬 Movie Ticket Booking App 🎟️"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/projectImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Project Description with Line Breaks -->
+    <TextView
+        android:id="@+id/projectDescriptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:lineSpacingExtra="11dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/projectTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="\n\n🎥 Enjoy the latest movies anytime! \n
+💺 Choose your favorite seats easily. \n
+🎟️ Book tickets in just a few taps. \n
+💳 Pay securely with multiple options. \n
+🔔 Get real-time movie notifications. \n
+📱 Instant QR-based e-tickets. \n
+⭐ Personalized recommendations. \n
+🔄 Easy cancellations &amp; quick refunds. \n
+🎭 Your perfect movie night awaits!\n\n"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
