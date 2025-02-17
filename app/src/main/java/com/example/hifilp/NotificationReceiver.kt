@@ -6,6 +6,8 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 
@@ -19,31 +21,49 @@ class NotificationReceiver : BroadcastReceiver() {
             else -> "Unknown Member"
         }
 
-        val channelId = "birthday_reminder"
+        val channelId = "birthday_reminder_channel"
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
+        // Create notification channel (for Android 8.0+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
                 "Birthday Reminders",
                 NotificationManager.IMPORTANCE_HIGH
-            )
+            ).apply {
+                description = "Reminders for birthdays"
+                enableLights(true)
+                lightColor = Color.BLUE
+                enableVibration(true)
+            }
             notificationManager.createNotificationChannel(channel)
         }
 
-        val notificationIntent = Intent(context, MainActivity::class.java)
+        // Sound for notification
+        val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+        // Intent to open the app when notification is clicked
+        val notificationIntent = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        }
+
         val pendingIntent = PendingIntent.getActivity(
-            context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            context, memberId, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        // Build notification
         val notification = NotificationCompat.Builder(context, channelId)
+            .setSmallIcon(android.R.drawable.ic_dialog_info) // Default info icon
+            // Replace with actual drawable resource
             .setContentTitle("🎂 Birthday Reminder!")
             .setContentText("It's $memberName's birthday today! 🎉")
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentIntent(pendingIntent)
             .setAutoCancel(true)
-            .build()
+            .setSound(soundUri)
+            .setContentIntent(pendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setDefaults(NotificationCompat.DEFAULT_ALL) // Enables vibration, sound, and lights
 
-        notificationManager.notify(memberId, notification)
+        // Show notification
+        notificationManager.notify(memberId, notification.build())
     }
 }
