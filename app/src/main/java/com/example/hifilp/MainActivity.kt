@@ -69,6 +69,11 @@ class MainActivity : AppCompatActivity() {
                     }, 1000)
                     true
                 }
+                R.id.popup_emotionMindset -> {
+                    // Navigate to SharedPrefActivity when EmotionMindset is clicked
+                    startActivity(Intent(this, SharedPrefActivity::class.java))
+                    true
+                }
                 else -> false
             }
         }

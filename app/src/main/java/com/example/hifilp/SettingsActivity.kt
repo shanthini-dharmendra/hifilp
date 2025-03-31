@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -116,6 +117,9 @@ class SettingsActivity : AppCompatActivity() {
 
                     Log.d("BirthdayReminder", "Reminder set for Member ${i + 1} at ${calendar.time}")
 
+                    // Save the reminder to Firebase Firestore
+                    saveReminderToFirestore(i + 1, dateTimeString)
+
                 } catch (e: Exception) {
                     Log.e("BirthdayReminder", "Error parsing date: ${e.message}")
                 }
@@ -123,6 +127,28 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         Toast.makeText(this, "All birthday reminders set!", Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Save reminder to Firebase Firestore
+     */
+    private fun saveReminderToFirestore(memberId: Int, dateTimeString: String) {
+        val db = FirebaseFirestore.getInstance()
+        val reminderData = hashMapOf(
+            "memberId" to memberId,
+            "dateTime" to dateTimeString
+        )
+
+        db.collection("BirthdayReminders")
+            .add(reminderData)
+            .addOnSuccessListener {
+                Log.d("BirthdayReminder", "Reminder saved for Member $memberId at $dateTimeString")
+                Toast.makeText(this, "Birthday reminder saved to Firebase!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Log.e("BirthdayReminder", "Error saving reminder: ${e.message}")
+                Toast.makeText(this, "Failed to save reminder in Firebase.", Toast.LENGTH_SHORT).show()
+            }
     }
 
     /**

@@ -51,6 +51,7 @@
             android:theme="@style/Theme.Hifilp"/>
         <activity android:name=".ProjectDescriptionActivity"/>
         <activity android:name=".AboutTeamActivity"/>
+        <activity android:name=".SharedPrefActivity" />
 
         <receiver android:name=".NotificationReceiver" android:exported="false"/>
        

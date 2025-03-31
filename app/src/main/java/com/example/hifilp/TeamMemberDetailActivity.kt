@@ -16,6 +16,7 @@ import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.firestore.FirebaseFirestore
 import java.io.IOException
 import java.util.Locale
 
@@ -25,6 +26,8 @@ class TeamMemberDetailActivity : AppCompatActivity() {
     private lateinit var latitudeInput: EditText
     private lateinit var longitudeInput: EditText
     private lateinit var fetchAddressButton: Button
+    private lateinit var saveDetailsButton: Button
+    private val firestore = FirebaseFirestore.getInstance()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +51,7 @@ class TeamMemberDetailActivity : AppCompatActivity() {
         latitudeInput = findViewById(R.id.latitudeInput)
         longitudeInput = findViewById(R.id.longitudeInput)
         fetchAddressButton = findViewById(R.id.fetchAddressButton)
+        saveDetailsButton = findViewById(R.id. retrieveDetailsButton)
 
         nameTextView.text = teamMemberName
         if (teamMemberImage != 0) {
@@ -70,6 +74,11 @@ class TeamMemberDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Save Details Button Click
+        saveDetailsButton.setOnClickListener {
+            saveMemberDetails(teamMemberName, details.second, details.third)
+        }
+
         // Button Click: Get Address from User Input and Show in Google Maps
         fetchAddressButton.setOnClickListener {
             val lat = latitudeInput.text.toString().toDoubleOrNull()
@@ -88,6 +97,29 @@ class TeamMemberDetailActivity : AppCompatActivity() {
                 Toast.makeText(this, "Enter valid latitude and longitude", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun saveMemberDetails(name: String?, contact: String, email: String) {
+        val memberDetails = hashMapOf(
+            "name" to (name ?: "Unknown"),
+            "contact" to contact,
+            "email" to email,
+            "rollNo" to "917722IT093",   // Replace with actual value from UI or data
+            "department" to "IT",        // Replace with actual value from UI or data
+            "college" to "TCE",          // Replace with actual value from UI or data
+            "year" to "3rd Year",        // Replace with actual value from UI or data
+            "skills" to "Front-end Dev, DBMS, UI/UX",  // Replace with actual value from UI or data
+            "projects" to "E-commerce App, Portfolio Website"  // Replace with actual value from UI or data
+        )
+
+        firestore.collection("teamMembers")
+            .add(memberDetails)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Details saved to Firestore!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error saving details: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -119,19 +151,16 @@ class TeamMemberDetailActivity : AppCompatActivity() {
                 "+91 9876543210",
                 "shanthinid@student.tce.edu"
             )
-
             "Yasvitha R S" -> Triple(
                 "Name: Yasvitha R S\nRoll No: 917722IT135\nDepartment: IT\nCollege: TCE\nYear: 3rd Year\nSkills: ML, AI, Full Stack Dev\nProjects: Chatbot, Expense Tracker",
                 "+91 9876543211",
                 "yasvitha@student.tce.edu"
             )
-
             "Rakesh S" -> Triple(
                 "Name: Rakesh S\nRoll No: 917722IT075\nDepartment: IT\nCollege: TCE\nYear: 3rd Year\nSkills: AI, Machine Learning, Web Dev\nProjects: Resume Analyzer, Quiz Portal",
                 "+91 9876543212",
                 "rakeshs@student.tce.edu"
             )
-
             else -> Triple("No description available.", "", "")
         }
 

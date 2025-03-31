@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">hifilp</string>
+    <string-array name="mindset_options">
+        <item>Happy</item>
+        <item>Sad</item>
+        <item>Lonely</item>
+        <item>Excited</item>
+        <item>Relaxed</item>
+    </string-array>
+
 </resources>

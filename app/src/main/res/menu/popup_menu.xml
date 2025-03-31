@@ -1,16 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/popup_emotionMindset"
+        android:title="EmotionMindset"
+        android:icon="@android:drawable/ic_menu_myplaces" />
+
+
     <item
         android:id="@+id/popup_viewProfile"
-        android:title="View Profile"/>
+        android:title="View Profile"
+        android:icon="@android:drawable/ic_menu_view" />
+
     <item
         android:id="@+id/popup_sendMessage"
-        android:title="Send Message"/>
+        android:title="Send Message"
+        android:icon="@android:drawable/ic_menu_send" />
 
-        <item
-            android:id="@+id/viewDetails"
-            android:title="View Details"
-            android:icon="@android:drawable/ic_menu_info_details" />
-
+    <item
+        android:id="@+id/viewDetails"
+        android:title="View Details"
+        android:icon="@android:drawable/ic_menu_info_details" />
 
 </menu>
